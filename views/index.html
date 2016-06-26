@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+  <head>
+    <meta charset="utf-8">
+    <title>Pet Hotel</title>
+    <script src="vendors/angular.min.js" charset="utf-8"></script>
+    <script src="scripts/script.js" charset="utf-8"></script>
+  </head>
+
+  <body>
+    <h1>Pet Hotel</h1>
+      <!-- sets the $scope for petController, is defined in script.js-->
+      <div ng-controller="petController">
+        <!--  ng model tag refers to the script.js petObjectToSend-->
+        <input type="text" ng-model="pet_name" name="name" placeholder="pet_name" value="">
+        <input type="text" ng-model="pet_type" name="name" placeholder="pet_type" value="">
+        <input type="text" ng-model="pet_age" name="name" placeholder="pet_age" value="">
+        <input type="img" ng-model="pet_image" name="name" placeholder="pet_image" value="">
+
+        <p>MEANie bind output: {{ pet_name }} {{pet_type}}</p>
+
+        <!-- <br><<img ng-src="{{record.photo}} alt="{{record.pet_name}}'s photo'"></br> -->
+
+        <!-- starts the function addPetRecord or getPetRecords when the user clicks on the button-->
+        <button type="button" ng-click="addPetRecord" name="button">add pet</button>
+        <!--'add pet' button clicked initiating addPetRecord function go to script.js $scope.addPetRecord -->
+        <button type="button" ng-click="getPetRecords" name="button">show pets</button>
+        <!--'show pets' button clicked initiating getRecord function go to script.js $scope.getPetRecord -->
+
+        <p ng-repeat='anything in allThePets.data'>{{anything.pet_name}}{{anything.pet_type}}</p>
+
+
+        <!-- <table>
+          <tr>
+            <th>Pet Name</th>
+            <th>Pet Type</th>
+            <th>Pet Age</th>
+            <th>Pet Image</th>
+          </tr>
+          <tr ng-repeat="anything in allThePets">
+            <td>{{anything.pet_name}}</td>
+            <td>{{anything.pet_type}}</td>
+            <td>{{anything.pet_age}}</td>
+            <td>{{anything.pet_image}}</td>
+          </tr>
+        </table> -->
+
+    </div>
+  </body>
+</html>
