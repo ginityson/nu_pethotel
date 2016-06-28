@@ -1,0 +1,18 @@
+//
+<div class="Jumbotron" ng-controller="petController">
+      <button type="button" ng-click="getPetRecords()" name="button">show pets</button>
+    <!--'show pets' button clicked initiating getPetRecords() function go to script.js $scope.getPetRecord -->
+
+    <table>
+      <!-- ng-repeat pulls the info back onto the dom
+      anything can be called anything but here refers to the array allThePets -->
+      <tr ng-repeat="anything in allThePets">
+        <td> <img ng-src="{{ anything.image }}" alt="{{ anything.name }}'s photo" class="resize" </td>
+        <td>Name: {{anything.name}}</td>
+        <td>Type: {{anything.type}}</td>
+        <td>Age: {{anything.age}}</td>
+        <!--  'remove pet' button calls the function removePet() w/the parameter of $index is this an NG varialbe now?-->
+        <td><button type="button" ng-click="removePet($index)" name="button">checkout</button></td>
+      </tr>
+    </table>
+</div>

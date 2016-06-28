@@ -1,6 +1,6 @@
 console.log('script.js sourced');
 
-var myApp = angular.module( 'myApp', [] );
+var myApp = angular.module( 'myApp', ['ui.bootstrap'] );
 
 //controller set up for "$scope" of what will be controlled by angular in index.html
 myApp.controller( 'petController', [ '$scope', '$http', function( $scope, $http ){
@@ -54,13 +54,21 @@ $scope.removePet = function(index){
   var petToRemove = $scope.allThePets[index];
   //here it is saying in NG to take the array allThePets and loop through it looking for index and removing it from the dom
   $scope.allThePets.splice(index, 1);
-  console.log(petToRemove._id);
+  console.log('petToRemove._id' + petToRemove._id);
   var petId = {id: petToRemove._id};
   $http({
-    method: 'POST',
+    method: 'DELETE',
     url: '/removePet',
     data: petId
   });//end of $http
 };//end of removePet
 
 }]);//end of petController controller
+
+myApp.controller('TabController', function ($scope, $window) {
+  $scope.tabs = [
+    { title: 'Home', content: 'partials/home.html'},
+    { title:'Add Pet', content: 'partials/addPet.html'},
+    { title:'See Pets', content: 'partials/seePets.html'}
+  ];
+});

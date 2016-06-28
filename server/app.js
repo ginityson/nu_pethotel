@@ -52,15 +52,12 @@ app.post( '/petPost', function( req, res ){
     });//end of /petPost pet info is now abiding in the database
 
     app.post( '/removePet', function (req, res) {
-
-      Petcollect.find()
+      var id = req.body.id;
+      Petcollect.findOne(id)
       //.then send all the data
       .then( function( data ){
         Petcollect.remove(data);
       });//end of the .then
-
-
-
 
     });//end of /RemovePet
   //static folder makes 'sourcing' files easy by making them all be on the same level of public
